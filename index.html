@@ -74,50 +74,48 @@
             margin-bottom: 20px;
             border: 3px solid white;
         }
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 600;
+        .accordion {
+            width: 80%;
+            margin: auto;
         }
-        .hero p {
-            font-size: 20px;
-            color: #f5f5f5;
-            margin: 20px 0;
-        }
-        .cta-button {
-            text-decoration: none;
-            background: #6b6bff;
-            color: white;
-            padding: 12px 24px;
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            font-size: 18px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .accordion-header {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
             transition: 0.3s;
         }
-        .cta-button:hover {
-            background: #4b4bff;
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
-        .content-section {
-            padding: 100px 20px;
-            min-height: 100vh;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            margin: 20px;
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            padding: 0 15px;
         }
-        .project {
-            margin: 30px auto;
-            width: 60%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        .accordion-content p {
+            padding: 15px 0;
         }
-        footer {
-            padding: 20px;
-            font-size: 14px;
-            color: #aaa;
+        .active .accordion-content {
+            max-height: 500px;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".accordion-header").forEach(item => {
+                item.addEventListener("click", function() {
+                    this.parentElement.classList.toggle("active");
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -126,6 +124,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
+                <li><a href="#photography">Photography</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -136,6 +135,27 @@
         <h1>Justin Rosman</h1>
         <p>Biomedical Engineer | Innovator | Researcher</p>
         <a href="#work" class="cta-button">View My Work</a>
+    </section>
+    
+    <section id="work" class="accordion">
+        <h2>Experience</h2>
+        <div class="accordion-item">
+            <div class="accordion-header">Philips Sonicare Innovation</div>
+            <div class="accordion-content">
+                <p>Designed benchtop testing platforms, created SOPs, and performed verification tests using robotic systems.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Garza Lab Research</div>
+            <div class="accordion-content">
+                <p>Studying cell identity changes to improve prosthetic outcomes for amputees.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="photography" class="content-section">
+        <h2>Photography</h2>
+        <p>Check out my portfolio of street photography, landscapes, and portraits.</p>
     </section>
     
     <footer>
